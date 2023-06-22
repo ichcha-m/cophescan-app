@@ -1,0 +1,21 @@
+---
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+------------------------------------------------------------------------
+
+> Welcome!
+
+> The cophescan shiny app allows you to explore the data used and visualise the results obtained in - *CoPheScan: phenome-wide association studies accounting for linkage disequilibrium.*
+>
+> FA detailed guide to explore the app please is given in the **README** tab.
+>
+> For issues/queries write to: **im504\@cam.ac.uk**
+>
+> The cophescan R package can be found at: <https://github.com/ichcha-m/cophescan>
+
+------------------------------------------------------------------------

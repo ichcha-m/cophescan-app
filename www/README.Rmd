@@ -1,0 +1,380 @@
+---
+output: html_fragment
+---
+
+```{=html}
+<style type="text/css">
+  body{
+  font-size: 12pt;
+}
+</style>
+```
+
+------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+------------------------------------------------------------------------
+
+#### **Key Terms**
+
+> -   **Primary trait/Protein**: Source of the putative causal variants. - Traits from FinnGen and pQTL fine-mapped to obtain the query variants. While PTV (Protein truncating variants) were selected by using a MAF (UKBB) threshold of \> 0.001.
+> -   **Query variants (QV)**: Variants tested for association against multiple query traits. (CoPheScan Input)
+> -   **Query traits (QT)**: All traits (from UKBB) used for the phenome-wide cophescan analysis. Traits from GWAS catalog used with the individual variants. (CoPheScan Input)
+
+------------------------------------------------------------------------
+
+#### **App usage guide**
+
+> ### **I. Explore input data**
+
+#### - Drop down: **Select query variant source**
+
+Select the source of putative variants:
+
+-   FinnGen (v5)
+
+-   pQTL (Ferkingstad et al)
+
+-   PTV - Protein truncating variants (MAF \> 0.05 or ClinVar)
+
+-   Individual - TYK2 and SLC39A8 variants
+
+<br>
+
+#### - Tab: **Query variants**
+
+Displays the table containing the putative causal variants from the selected source (FinnGen or pQTL or PTV or Individual).
+
+**IMPORTANT NOTE**:
+
+Use the Hc_detected column to select only those variants that were detected as Hc with cophescan.
+
+<br>
+
+**FinnGen table:**
+
++-----------------------------+-------------------------------------------------------------------+
+|                             | description                                                       |
++=============================+===================================================================+
+| queryvariant_38             | Query variant hg38 coordinates                                    |
++-----------------------------+-------------------------------------------------------------------+
+| queryvariant_19             | Query variant hg19 coordinates                                    |
++-----------------------------+-------------------------------------------------------------------+
+| primarytrait                | fine-mapped FinnGen primary traits (source of chosen variant)     |
++-----------------------------+-------------------------------------------------------------------+
+| finn_primary_longname       | primary trait description (FinnGen)                               |
++-----------------------------+-------------------------------------------------------------------+
+| primary_trait_direction_eff | Direction of effect of the variant for the primary traits         |
++-----------------------------+-------------------------------------------------------------------+
+| UKBB_primary_equiv          | Corresponding UKBB primary trait                                  |
++-----------------------------+-------------------------------------------------------------------+
+| UKBB_primary_descrip        | primary trait description (UKBB)                                  |
++-----------------------------+-------------------------------------------------------------------+
+| prob                        | fine-mapping prob                                                 |
++-----------------------------+-------------------------------------------------------------------+
+| rsid                        | Query variant rsid                                                |
++-----------------------------+-------------------------------------------------------------------+
+| consequence                 | Query variant consequence                                         |
++-----------------------------+-------------------------------------------------------------------+
+| consequence_category        | Query variant consequence category                                |
++-----------------------------+-------------------------------------------------------------------+
+| ukbb_minor_allele           | Minor allele of the variant in the UKBB dataset                   |
++-----------------------------+-------------------------------------------------------------------+
+| ukbb_minor_AF               | Minor allele frequency                                            |
++-----------------------------+-------------------------------------------------------------------+
+| ensembl_gene_id             | Query variant ensembl gene id annotation from Ensembl biomart (R) |
++-----------------------------+-------------------------------------------------------------------+
+| gene_name                   | Query variant hgnc gene annotation from Ensembl biomart (R)       |
++-----------------------------+-------------------------------------------------------------------+
+| rsid_all                    | Query variant rsid with alleles                                   |
++-----------------------------+-------------------------------------------------------------------+
+| Hc_detected                 | Query variant detected in cophescan analysis (true/false)         |
++-----------------------------+-------------------------------------------------------------------+
+|                             |                                                                   |
++-----------------------------+-------------------------------------------------------------------+
+
+<br>
+
+**pQTL table:**
+
++-----------------------------+------------------------------------------------------------------------------------+
+|                             | description                                                                        |
++=============================+====================================================================================+
+| queryvariant_38             | Query variant hg38 coordinates                                                     |
++-----------------------------+------------------------------------------------------------------------------------+
+| queryvariant_19             | Query variant hg19 coordinates                                                     |
++-----------------------------+------------------------------------------------------------------------------------+
+| primarytrait                | fine-mapped pQTL primary traits (source of chosen variant - Ferkingstad et al)     |
++-----------------------------+------------------------------------------------------------------------------------+
+| symbol                      | protein symbol from biomart                                                        |
++-----------------------------+------------------------------------------------------------------------------------+
+| uniprotswissprot            | uniprotswissprot id from biomart                                                   |
++-----------------------------+------------------------------------------------------------------------------------+
+| description                 | description from biomart                                                           |
++-----------------------------+------------------------------------------------------------------------------------+
+| primary_trait_direction_eff | Direction of effect of the variant for the protein (Only where Hc_detected = TRUE) |
++-----------------------------+------------------------------------------------------------------------------------+
+| PP                          | posterior probability of fine-mapping                                              |
++-----------------------------+------------------------------------------------------------------------------------+
+| set_number                  | the fine-mapping set number that the variant belongs to                            |
++-----------------------------+------------------------------------------------------------------------------------+
+| nsets                       | Number of sets obtained using fine-mapping                                         |
++-----------------------------+------------------------------------------------------------------------------------+
+| rsid                        | Query variant rsid                                                                 |
++-----------------------------+------------------------------------------------------------------------------------+
+| consequence                 | Query variant consequence                                                          |
++-----------------------------+------------------------------------------------------------------------------------+
+| consequence_category        | Query variant consequence category                                                 |
++-----------------------------+------------------------------------------------------------------------------------+
+| ukbb_minor_allele           | Minor allele of the variant in the UKBB dataset                                    |
++-----------------------------+------------------------------------------------------------------------------------+
+| ukbb_minor_AF               | Minor allele frequency                                                             |
++-----------------------------+------------------------------------------------------------------------------------+
+| ensembl_gene_id             | Query variant ensembl gene id annotation from Ensembl biomart (R)                  |
++-----------------------------+------------------------------------------------------------------------------------+
+| gene_name                   | Query variant hgnc gene annotation from Ensembl biomart (R)                        |
++-----------------------------+------------------------------------------------------------------------------------+
+| rsid_all                    | Query variant rsid with alleles                                                    |
++-----------------------------+------------------------------------------------------------------------------------+
+| Hc_detected                 | Query variant detected in cophescan analysis (true/false)                          |
++-----------------------------+------------------------------------------------------------------------------------+
+|                             |                                                                                    |
++-----------------------------+------------------------------------------------------------------------------------+
+
+<br>
+
+**PTV table:**
+
++--------------------------------+-------------------------------------------------------------------+
+|                                | description                                                       |
++================================+===================================================================+
+| queryvariant_38                | Query variant hg38 coordinates                                    |
++--------------------------------+-------------------------------------------------------------------+
+| rsid                           | Query variant rsid                                                |
++--------------------------------+-------------------------------------------------------------------+
+| consequence                    | Query variant consequence                                         |
++--------------------------------+-------------------------------------------------------------------+
+| consequence_category           | Query variant consequence category                                |
++--------------------------------+-------------------------------------------------------------------+
+| primarytrait                   | PTVs with MAF \>0.001                                             |
++--------------------------------+-------------------------------------------------------------------+
+| queryvariant_19                | Query variant hg19 coordinates                                    |
++--------------------------------+-------------------------------------------------------------------+
+| ensembl_gene_id                | Query variant ensembl gene id annotation from Ensembl biomart (R) |
++--------------------------------+-------------------------------------------------------------------+
+| gene_name                      | Query variant hgnc gene annotation from Ensembl biomart (R)       |
++--------------------------------+-------------------------------------------------------------------+
+| ukbb_minor_allele              | Minor allele of the variant in the UKBB dataset                   |
++--------------------------------+-------------------------------------------------------------------+
+| ukbb_minor_AF                  | Minor allele frequency                                            |
++--------------------------------+-------------------------------------------------------------------+
+| rsid_all                       | Query variant rsid with alleles                                   |
++--------------------------------+-------------------------------------------------------------------+
+| Hc_detected                    | Query variant detected in cophescan analysis (true/false)         |
++--------------------------------+-------------------------------------------------------------------+
+| <br>                           |                                                                   |
+|                                |                                                                   |
+| **Individual variants table:** |                                                                   |
++--------------------------------+-------------------------------------------------------------------+
+
++----------------------+-------------------------------------------------------------+
+|                      | description                                                 |
++======================+=============================================================+
+| queryvariant_38      | Query variant hg38 coordinates                              |
++----------------------+-------------------------------------------------------------+
+| queryvariant_19      | Query variant hg19 coordinates                              |
++----------------------+-------------------------------------------------------------+
+| chr                  | Query variant chromosome                                    |
++----------------------+-------------------------------------------------------------+
+| ref                  | Reference allele                                            |
++----------------------+-------------------------------------------------------------+
+| alt                  | ALT allele                                                  |
++----------------------+-------------------------------------------------------------+
+| rsid                 | Query variant rsid                                          |
++----------------------+-------------------------------------------------------------+
+| ukbb_minor_allele    | Minor allele of the variant in the UKBB dataset             |
++----------------------+-------------------------------------------------------------+
+| ukbb_minor_AF        | Minor allele frequency                                      |
++----------------------+-------------------------------------------------------------+
+| consequence          | Query variant consequence                                   |
++----------------------+-------------------------------------------------------------+
+| consequence_category | Query variant consequence category                          |
++----------------------+-------------------------------------------------------------+
+| gene_name            | Query variant hgnc gene annotation from Ensembl biomart (R) |
++----------------------+-------------------------------------------------------------+
+| primarytrait         | Individual variant study                                    |
++----------------------+-------------------------------------------------------------+
+| rsid_all             | Query variant rsid with alleles                             |
++----------------------+-------------------------------------------------------------+
+| Hc_detected          | Query variant detected in cophescan analysis (true/false)   |
++----------------------+-------------------------------------------------------------+
+|                      |                                                             |
++----------------------+-------------------------------------------------------------+
+
+<br>
+
+#### - Tab: **UKBB Query traits**
+
+All the UKBB traits used for the phenome-wide analysis performed with cophescan.
+
++------------------------------+---------------------------------------+
+|                              | description                           |
++==============================+=======================================+
+| phenotype                    | UKBB phenotype code                   |
++------------------------------+---------------------------------------+
+| Phenotype Description        | description of the phenotype          |
++------------------------------+---------------------------------------+
+| variable_type                | binary/categorical trait              |
++------------------------------+---------------------------------------+
+| source                       | source used to assign phenotype coded |
++------------------------------+---------------------------------------+
+| n_non_missing                | Number of non-missing samples         |
++------------------------------+---------------------------------------+
+| n_missing                    | Number of missing samples             |
++------------------------------+---------------------------------------+
+| n_controls                   | Number of controls                    |
++------------------------------+---------------------------------------+
+| n_cases                      | Number of cases                       |
++------------------------------+---------------------------------------+
+|                              |                                       |
++------------------------------+---------------------------------------+
+
+<br>
+
+#### - Tab: **GWAS cat Query traits**
+
+All the GWAS catalog traits used for the analysis performed with cophescan fixed priors on individually selected variants.
+This tab is revealed only when the selection: Individual is made from the 'Select query variant source' dropdown.
+
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+|                                                                                                                | description                                                                       |
++================================================================================================================+===================================================================================+
+| First Author                                                                                                   | First Author of the study                                                         |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Year                                                                                                           | Year of the study                                                                 |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Reference                                                                                                      | Reference ID of the study                                                         |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| phenotype                                                                                                      | phenotype                                                                         |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| phenotype_description                                                                                          | description of the phenotype                                                      |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| phenotype_categ                                                                                                | phenotype_category from Open Target Genetics                                      |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| 1000genPop                                                                                                     | Population                                                                        |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Subsequent 4 columns: 4_102267552_C\_T, 19_10354167_G\_A, 19_10352442_G\_C, 19_10359299_A\_C, 19_10359243_G\_A | These 4 columns show if that query variant were found in the corresponding study. |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+|                                                                                                                |                                                                                   |
++----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+
+------------------------------------------------------------------------
+
+<br>
+
+> #### **II. CoPheScan results**
+
+<br>
+
+#### - Drop down: **Select variant**
+
+Pick the variant that you want to study.
+Variants can also be searched by typing in the search box.
+The variants are tagged with eiher gene name (from ensembl Biomart) for the FinnGen, PTV and Individual variants or with protein symbols for the pQTL variants.
+
+<br>
+
+#### - Slider: **ppHc \> Hc threshold:**
+
+Set the threshold of ppHc (posterior probability of causal association of the QV with the QT).
+The default is 0.6 which is used in the paper.
+Query traits with Hc above this threshold are displayed in the table.
+
+<br>
+
+#### - Tab: **Tables**
+
+The green infobox shows the selected variant and clicking the box opens the variant in Open Target Genetics in a new browser window.
+
+The primary trait info table (yellow) shows in how many fine-mapped primary traits/proteins the variant was found to be a putative causal variant and also the direction of effect (beta in the primary trait summary stat dataset).
+
+*Table content description:*
+
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                          | description                                                                                                                                                                                     |
++==========================+=================================================================================================================================================================================================+
+| querysnp                 | Query variant                                                                                                                                                                                   |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rsid                     | Query variant rsid                                                                                                                                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| consequence_category     | Query variant consequence category                                                                                                                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| consequence              | Query variant consequence from VEP                                                                                                                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| querytrait               | Detected Query trait                                                                                                                                                                            |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| qrtrait_descrip          | Query trait description                                                                                                                                                                         |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| log10pval                | -log10(pval) of the query trait                                                                                                                                                                 |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| querytrait_direction_eff | the direction of effect of query trait (beta in the query trait summary stat dataset). Compare with the direction of effect of primary traits in the yellow table on the top right of the page. |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc.hier.norg             | Hc with Hierarchical\|SuSIE\|no r~g~                                                                                                                                                            |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc.hier.rg               | Hc with Hierarchical\|SuSIE\|with r~g~ (Only UKBB/FinnGen)                                                                                                                                      |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc.hier.rg.all           | Hc with Hierarchical\|SuSIE\|with r~g~ (Only PTV: All PTV variants with MAF \>0.001)                                                                                                            |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc.hier.rg.gnomAD        | Hc with Hierarchical\|SuSIE\|with r~g~ (Only PTV: variants with MAF \>0.001 AND homozygous predicted loss of function pLoF (gnomAD) )                                                           |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc.hier.rg.StopGained    | Hc with Hierarchical\|SuSIE\|with r~g~ (Only PTV: variants with MAF \>0.001 AND stop gained )                                                                                                   |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Hc                       | Hc with fixed priors (inferred from the FinnGen UKBB model) (Only Individual)                                                                                                                   |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rg                       | Genetic correlation (r~g~) between the query and primary traits(Only UKBB/FinnGen)                                                                                                              |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ukbbeq_primarytrait_rg   | All the primary traits (UKBB traitsequivalent to those from FinnGen) in high r~g~, resulting in high Hc (Only UKBB/FinnGen).                                                                    |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| gnomAD                   | Only for UKBB/PTV results - Shows if the query variant is a homozygous pLoF (source: gnomAD)                                                                                                    |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| gene_name                | Query variant gene name                                                                                                                                                                         |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                          |                                                                                                                                                                                                 |
++--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Buttons to download or copy the selected variant are present at the top left corner of the table.
+
+**NOTE**:
+
+1.  There are some missing results in the Hc (Hc.hier.norg or Hc.hier.sus.rg) columns of the FinnGen results, which is due to one of the following reasons:
+
+    -   the Hc being low in one of them.
+        We display the Hc results only if the ppHc \> 0.6.
+
+    -   the r~g~ between the primary and query trait was not available and hence the Hc.hier.sus.rg result was not computed.
+
+2.  The plots in the next tab are made using Hc with no genetic correlation (Hc.hier.norg).
+
+<br>
+
+#### - Tab: **Plots**
+
+The green infobox shows the selected variant and clicking the box opens the variant in Open Target Genetics in a new browser window.
+
+The primary trait info table (yellow) shows in how many fine-mapped primary traits/proteins the variant was found to be a putative causal variant and also the direction of effect (beta in the primary trait summary stat dataset).
+
+The interactive plot shows the Hc (with Hierarchical priors\|SuSIE for FinnGen, PTV and pQTL and Fixed priors\|SuSIE for Individual variants) Vs -log10pVal.
+Hovering over a point shows the query trait which was found to be associated with the queried SNP.
+
+------------------------------------------------------------------------
+
+<br>
+
+#### Tab: **README**
+
+Help documentation
+
+------------------------------------------------------------------------
