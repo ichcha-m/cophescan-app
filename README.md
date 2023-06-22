@@ -16,7 +16,7 @@ The cophescan shiny app allows you to explore the data used and visualise the re
 
 A detailed guide to explore the app is given in the **README** tab within the app or in the [app navigation file](www/appNavigation.md).
 
-Please write to us for issues/queries
+Please write to us for issues/queries: <https://github.com/ichcha-m/copheApp/issues>
 
 The cophescan R package can be found at: <https://github.com/ichcha-m/cophescan>
 

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 >
 > The code for the shiny app: <https://github.com/ichcha-m/copheApp>
 >
-> For issues/queries write to: **im504@cam.ac.uk**
+> For issues/queries write to: <https://github.com/ichcha-m/copheApp/issues>
 >
 > The cophescan R package can be found at: <https://github.com/ichcha-m/cophescan>
 
