@@ -1,6 +1,8 @@
 # CoPheScan-app
 
-The cophescan shiny app allows you to explore the data used and visualise the results obtained in - *CoPheScan: phenome-wide association studies accounting for linkage disequilibrium.*
+The cophescan shiny app allows you to explore the data used and visualise the results obtained in - 
+
+*CoPheScan: phenome-wide association studies accounting for linkage disequilibrium.*
 
 **A.** Run online:
 
