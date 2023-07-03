@@ -6,7 +6,7 @@ The cophescan shiny app allows you to explore the data used and visualise the re
 
 **A.** Run online:
 
-- You can interact with the results online at https://ichcha-m.shinyapps.io/cophescan/
+- You can interact with the results online at https://ichcha-m.shinyapps.io/cophescan-app/
 
 **B.** Run locally:
 
